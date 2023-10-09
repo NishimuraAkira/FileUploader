@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>メニュー</title>
+<style>
+    form div {
+        margin-top: 2rem;
+        margin-left: 1rem;
+    }
+</style>
+</head>
+<body>
+    <div>
+        <!-- /* 「enctype="multipart/form-data"」でアップロードファイルをコントローラークラスに渡す */ -->
+        <form th:action="@{/upload}" method="post" enctype="multipart/form-data" th:object="${uploadForm}">
+            <div>
+                <!-- /* ===== 変更3：画面の入力ボックスに「multiple」を追記 ===== */ -->
+                <input type="file" th:field="*{multipartFile}" multiple>
+            </div>
+            <div>
+                <input type="submit" value="アップロード">
+            </div>
+        </form>
+    </div>
+</body>
+</html>
